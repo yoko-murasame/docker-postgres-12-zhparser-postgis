@@ -8,6 +8,7 @@
 1. [zhparser](https://github.com/amutu/zhparser/) `full-text search of Chinese`
 1. [pg-safeupdate](https://github.com/eradman/pg-safeupdate) `require SQL Where Clause in update/delete`
 1. [pg_cron](https://github.com/citusdata/pg_cron) `run cron job`
+1. [postgis](https://github.com/postgis/docker-postgis/tree/master/12-3.3) `postgis`
 
 ## Cofnig
 
