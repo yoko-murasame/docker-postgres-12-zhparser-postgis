@@ -1,6 +1,6 @@
-ARG pg_version=13
+ARG pg_version=12
 
-FROM postgres:${pg_version}-alpine
+FROM postgis/postgis:${pg_version}-3.3-alpine
 
 RUN set -ex \
     && apk add --no-cache --virtual .build-deps gcc libc-dev make pkgconf clang llvm cmake g++ \
