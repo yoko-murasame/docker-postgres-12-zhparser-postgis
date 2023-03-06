@@ -1,4 +1,4 @@
-# postgres-docker
+# docker-postgres-12-zhparser-postgis
 
 > Self-use postgres docker image with following changes
 
@@ -39,6 +39,19 @@ SELECT to_tsvector('chinese', '人生苦短，乘早摸鱼，Good Morning~');
                       to_tsvector
 --------------------------------------------------------
 'good':8 'morning':9 '乘':4 '人生':1 '摸':6 '早':5 '短':3 '苦':2 '鱼':7
+
+-- add custom dict
+insert into zhprs_custom_word values ('摸鱼');
+insert into zhprs_custom_word values ('荒天帝');
+insert into zhprs_custom_word values ('独断万古');
+insert into zhprs_custom_word values ('人生苦短');
+-- make effect
+select sync_zhprs_custom_word();
+
+-- test
+SELECT * FROM ts_parse('zhparser', '人生苦短，爆炸吧，小宇宙，独断万古荒天帝，摸鱼ing，Good Morning~');
+SELECT to_tsquery('chinese', '荒天帝石昊');
+SELECT to_tsvector('chinese', '人生苦短，爆炸吧，小宇宙，独断万古荒天帝，摸鱼ing，Good Morning~');
 ```
 
 ## Backup Data
