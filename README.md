@@ -17,3 +17,37 @@
 1. `max_replication_slots` if `USE_REPLICATION` env is set
 
 more in [this file](https://github.com/fengkx/postgres-docker/blob/master/init_extension.sh)
+
+## Build
+
+```shel
+docker build -t postgres-12-zhparser-postgis:1.0 .
+```
+
+## Run
+
+```shell
+docker run --name postgres-12 -e POSTGRES_PASSWORD=dsjy@123 -p 54321:5432 -d postgres-12-zhparser-postgis:3.0
+```
+
+## Using
+
+```sql
+psql -d <database>
+-- CREATE EXTENSION zhparser;
+-- CREATE TEXT SEARCH CONFIGURATION chinese (PARSER = zhparser);
+-- ALTER TEXT SEARCH CONFIGURATION chinese
+-- ADD MAPPING FOR a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z
+-- WITH simple;
+
+SELECT to_tsvector('chinese', '人生苦短，乘早摸鱼，Good Morning~');
+                      to_tsvector
+--------------------------------------------------------
+'good':8 'morning':9 '乘':4 '人生':1 '摸':6 '早':5 '短':3 '苦':2 '鱼':7
+```
+
+## Backup Data
+
+```shell
+docker exec -it postgres-12 pg_dump -Upostgres > backup.sql
+```
