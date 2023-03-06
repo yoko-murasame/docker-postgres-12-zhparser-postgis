@@ -34,11 +34,6 @@ docker run --name postgres-12 -e POSTGRES_PASSWORD=<PASSWORD> -p <PORT>:5432 -d 
 
 ```sql
 psql -d <database>
--- CREATE EXTENSION zhparser;
--- CREATE TEXT SEARCH CONFIGURATION chinese (PARSER = zhparser);
--- ALTER TEXT SEARCH CONFIGURATION chinese
--- ADD MAPPING FOR a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z
--- WITH simple;
 
 SELECT to_tsvector('chinese', '人生苦短，乘早摸鱼，Good Morning~');
                       to_tsvector
