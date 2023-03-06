@@ -27,7 +27,7 @@ docker build -t postgres-12-zhparser-postgis:1.0 .
 ## Run
 
 ```shell
-docker run --name postgres-12 -e POSTGRES_PASSWORD=dsjy@123 -p 54321:5432 -d postgres-12-zhparser-postgis:3.0
+docker run --name postgres-12 -e POSTGRES_PASSWORD=<PASSWORD> -p <PORT>:5432 -d postgres-12-zhparser-postgis:1.0
 ```
 
 ## Using
