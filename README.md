@@ -21,13 +21,15 @@ more in [this file](https://github.com/fengkx/postgres-docker/blob/master/init_e
 ## Build
 
 ```shel
-docker build -t postgres-12-zhparser-postgis:1.0 .
+docker build -t postgres-12-zhparser-postgis:latest .
+docker save -o postgres-12-zhparser-postgis postgres-13-zhparser-postgis:latest
+docker load -i postgres-12-zhparser-postgis
 ```
 
 ## Run
 
 ```shell
-docker run --name postgres-12 -e POSTGRES_PASSWORD=<PASSWORD> -p <PORT>:5432 -d postgres-12-zhparser-postgis:1.0
+docker run --name postgres-12 -e POSTGRES_PASSWORD=<PASSWORD> -p <PORT>:5432 -d postgres-13-zhparser-postgis:latest
 ```
 
 ## Using
