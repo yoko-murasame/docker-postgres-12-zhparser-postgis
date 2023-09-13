@@ -1,9 +1,11 @@
+# Current Support: 12, 13, 14
 ARG pg_version=12
 
 FROM postgis/postgis:${pg_version}-3.3-alpine
 
+WORKDIR /
 RUN set -ex \
-    && apk add --no-cache --virtual .build-deps gcc libc-dev make pkgconf clang llvm cmake g++ \
+    && apk add --no-cache --virtual .build-deps gcc libc-dev make pkgconf clang15 llvm15 cmake g++ \
     && wget -q -O - http://www.xunsearch.com/scws/down/scws-1.2.3.tar.bz2 | tar jxf - \
     && wget -q -O - "https://github.com/amutu/zhparser/archive/master.tar.gz" | tar zxf - \
     && wget -q -O - "https://github.com/eradman/pg-safeupdate/archive/master.tar.gz" | tar zxf - \
