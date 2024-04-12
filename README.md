@@ -20,10 +20,15 @@ more in [this file](https://github.com/fengkx/postgres-docker/blob/master/init_e
 
 ## Build
 
-```shel
-docker build -t postgres-12-zhparser-postgis:latest .
+```shell
+# amd64
+docker build -t postgres-12-zhparser-postgis:latest -f ./Dockerfile .
 docker save -o postgres-12-zhparser-postgis postgres-13-zhparser-postgis:latest
 docker load -i postgres-12-zhparser-postgis
+# arm64
+docker build -t postgres-12-zhparser-postgis-arm:latest -f ./DockerfileArm64 .
+docker save -o postgres-12-zhparser-postgis-arm postgres-13-zhparser-postgis-arm:latest
+docker load -i postgres-12-zhparser-postgis-arm
 ```
 
 ## Run
